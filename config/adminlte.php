@@ -123,14 +123,24 @@ return [
         ],
         'ACCOUNT SETTINGS',
         [
-            'text' => 'Profile',
+            'text' => 'Cuenta',
             'url'  => 'admin/settings',
             'icon' => 'user',
         ],
         [
-            'text' => 'Change Password',
-            'url'  => 'admin/settings',
-            'icon' => 'lock',
+            'text' => 'Proforma',
+            'url'  => 'admin/producto',
+            'icon' => 'envelope-square',
+        ],
+        [
+            'text' => 'Clientes',
+            'url'  => 'admin/producto',
+            'icon' => 'group',
+        ],
+        [
+            'text' => 'Productos',
+            'url'  => 'admin/producto',
+            'icon' => 'barcode',
         ],
         [
             'text'    => 'Configuración',
@@ -141,47 +151,18 @@ return [
                     'url'  => 'admin/almacen',
                 ],
                 [
-                    'text'    => 'Level One',
-                    'url'     => '#',
-                    'submenu' => [
-                        [
-                            'text' => 'Level Two',
-                            'url'  => '#',
-                        ],
-                        [
-                            'text'    => 'Level Two',
-                            'url'     => '#',
-                            'submenu' => [
-                                [
-                                    'text' => 'Level Three',
-                                    'url'  => '#',
-                                ],
-                                [
-                                    'text' => 'Level Three',
-                                    'url'  => '#',
-                                ],
-                            ],
-                        ],
-                    ],
+                    'text' => 'Categorías',
+                    'url'  => 'admin/categoria',
                 ],
                 [
-                    'text' => 'Level One',
-                    'url'  => '#',
+                    'text' => 'Subcategorías',
+                    'url'  => 'admin/subcategoria',
+                ],
+                [
+                    'text' => 'Marcas',
+                    'url'  => 'admin/marca',
                 ],
             ],
-        ],
-        'LABELS',
-        [
-            'text'       => 'Important',
-            'icon_color' => 'red',
-        ],
-        [
-            'text'       => 'Warning',
-            'icon_color' => 'yellow',
-        ],
-        [
-            'text'       => 'Information',
-            'icon_color' => 'aqua',
         ],
     ],
 

@@ -1,13 +1,13 @@
 @extends('adminlte::page')
 
-@section('content') 
-<div class="row">
+@section('content')
+        <div class="row">
 
             <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
                 <div class="panel panel-default">
-                    <div class="panel-heading">
+                    <div class="panel-heading">Registrar Categoría</div>
                     <div class="panel-body">
-                        <a href="{{ url('/%%routeGroup%%%%viewName%%') }}" title="Atras"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
+                        <a href="{{ url('/admin/categoria') }}" title="Atras"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Atras</button></a>
                         <br />
                         <br />
 
@@ -19,10 +19,10 @@
                             </ul>
                         @endif
 
-                        <form method="POST" action="{{ url('/%%routeGroup%%%%viewName%%') }}" accept-charset="UTF-8" class="form-horizontal" enctype="multipart/form-data">
+                        <form method="POST" action="{{ url('/admin/categoria') }}" accept-charset="UTF-8" class="form-horizontal" enctype="multipart/form-data">
                             {{ csrf_field() }}
 
-                            @include ('%%viewTemplateDir%%.form')
+                            @include ('admin.categoria.form')
 
                         </form>
 

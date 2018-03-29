@@ -1,0 +1,126 @@
+{
+    "fields": [
+        {
+            "name": "producto",
+            "type": "string"
+        },
+        {
+            "name": "cod_barra",
+            "type": "string"
+        },
+        {
+            "name": "pre_compra",
+            "type": "string"
+        },
+        {
+            "name": "pre_venta",
+            "type": "string"
+        },
+        {
+            "name": "cantidad",
+            "type": "string"
+        },
+        {
+            "name": "fecha_ingreso",
+            "type": "date"
+        },
+        {
+            "name": "compras",
+            "type": "string"
+        },
+        {
+            "name": "ventas",
+            "type": "string"
+        },
+        {
+            "name": "saldo",
+            "type": "string"
+        },
+        {
+            "name": "imagen",
+            "type": "file"
+        },
+        {
+            "name": "name_img",
+            "type": "string"
+        },
+        {
+            "name": "nuevo",
+            "type": "select",
+            "options": {
+                "1": "SI",
+                "0": "NO"
+            }
+        },
+        {
+            "name": "promocion",
+            "type": "select",
+            "options": {
+                "1": "SI",
+                "0": "NO"
+            }
+        },
+        {
+            "name": "catalogo",
+            "type": "select",
+            "options": {
+                "1": "SI",
+                "0": "NO"
+            }
+        },
+        {
+            "name": "activo",
+            "type": "select",
+            "options": {
+                "1": "Activo",
+                "0": "Inactivo"
+            }
+        },        
+        {
+            "name": "propaganda",
+            "type": "text"
+        },
+        {
+            "name": "categoria_id",
+            "type": "integer#unsigned"
+        },
+        {
+            "name": "subcategoria_id",
+            "type": "integer#unsigned"
+        },
+        {
+            "name": "marca_id",
+            "type": "integer#unsigned"
+        }
+    ],
+    "foreign_keys": [
+        {
+            "column": "categoria_id",
+            "references": "id",
+            "on": "categorias"
+        },
+        {
+            "column": "marca_id",
+            "references": "id",
+            "on": "marcas"
+        },
+        {
+            "column": "subcategoria_id",
+            "references": "id",
+            "on": "subcategorias"
+        }
+    ],
+    "relationships": [
+        {
+            "name": "producto",
+            "type": "belongsTo",
+            "class": "App\\Producto"
+        }
+    ],
+    "validations": [
+        {
+            "field": "producto",
+            "rules": "max:191"
+        }
+    ]
+}

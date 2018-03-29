@@ -1,1 +1,1 @@
-php artisan crud:generate Almacen --fields_from_file="C:/Users/Andres/Dropbox/Dropbox/cotifast/public/fields/fieldsalmacen.json" --view-path=admin --controller-namespace=Admin --route-group=admin
+php artisan crud:generate Producto --fields_from_file="C:/Users/Andres/Dropbox/Dropbox/cotifast/public/fields/fields.json" --view-path=admin --controller-namespace=Admin --route-group=admin

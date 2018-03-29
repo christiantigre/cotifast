@@ -7,9 +7,9 @@
 
             <div class="col-md-11">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Edit %%modelName%% #{{ $%%crudNameSingular%%->%%primaryKey%% }}</div>
+                    <div class="panel-heading">Editar Categorium #{{ $categorium->id }}</div>
                     <div class="panel-body">
-                        <a href="{{ url('/%%routeGroup%%%%viewName%%') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
+                        <a href="{{ url('/admin/categoria') }}" title="Atras"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Atras</button></a>
                         <br />
                         <br />
 
@@ -21,11 +21,17 @@
                             </ul>
                         @endif
 
-                        <form method="POST" action="{{ url('/%%routeGroup%%%%viewName%%/' . $%%crudNameSingular%%->%%primaryKey%%) }}" accept-charset="UTF-8" class="form-horizontal" enctype="multipart/form-data">
-                            {{ method_field('PATCH') }}
+                        {!! Form::model($categorium, [
+                            'method' => 'PATCH',
+                            'url' => ['/admin/categoria', $categorium->id],
+                            'class' => 'form-horizontal', 
+                            'enctype'=>'multipart/form-data',
+                            'files' => true,
+                            'accept-charset'=>'UTF-8'
+                        ]) !!}
                             {{ csrf_field() }}
 
-                            @include ('%%viewTemplateDir%%.form', ['submitButtonText' => 'Update'])
+                            @include ('admin.categoria.form', ['submitButtonText' => 'Actualizar'])
 
                         </form>
 
