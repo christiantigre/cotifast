@@ -13,7 +13,7 @@ use App\Provincias;
 use App\Canton;
 
 use Session;
-//use Carbon\Carbon;
+use Carbon\Carbon;
 use App\SvLog;
 
 class AlmacenController extends Controller
@@ -32,7 +32,7 @@ class AlmacenController extends Controller
     {
         $keyword = $request->get('search');
         $perPage = 25;
-        //$this->genLog("Visualizó Configuración Almacen"); 
+        $this->genLog("Visualizó Configuración Almacen"); 
 
         if (!empty($keyword)) {
             $almacen = Almacen::where('almacen', 'LIKE', "%$keyword%")
