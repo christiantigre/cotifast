@@ -133,12 +133,12 @@ return [
             'icon' => 'lock',
         ],
         [
-            'text'    => 'Multilevel',
-            'icon'    => 'share',
+            'text'    => 'Configuración',
+            'icon'    => 'gear',
             'submenu' => [
                 [
-                    'text' => 'Level One',
-                    'url'  => '#',
+                    'text' => 'Local',
+                    'url'  => 'admin/almacen',
                 ],
                 [
                     'text'    => 'Level One',

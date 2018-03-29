@@ -7,6 +7,7 @@
     "require": {
         "php": "^7.1.3",
         "andres/ecuadlocation": "^1.3",
+        "appzcoder/crud-generator": "^3.0",
         "fideloper/proxy": "^4.0",
         "hesto/multi-auth": "^2.0",
         "jeroennoten/laravel-adminlte": "^1.23",
