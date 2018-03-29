@@ -28,6 +28,15 @@
         <link rel="stylesheet" href="//cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css">
     @endif
 
+    <!-- Jquery edit for Datepicker-->
+    <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+    <!-- Datepicker Files -->
+    <link rel="stylesheet" href="{{asset('plugins/bootstrap-datepicker-1.6.4/css/bootstrap-datepicker3.min.css')}}">
+    <link rel="stylesheet" href="{{asset('plugins/bootstrap-datepicker-1.6.4/css/bootstrap-datepicker.standalone.min.css')}}">
+    <script src="{{asset('plugins/bootstrap-datepicker-1.6.4/js/bootstrap-datepicker.min.js')}}"></script>
+    <!-- Datepicker Languaje -->
+    <script src="{{asset('plugins/bootstrap-datepicker-1.6.4/locales/bootstrap-datepicker.es.min.js')}}"></script>
+
     @yield('adminlte_css')
 
     <!--[if lt IE 9]>

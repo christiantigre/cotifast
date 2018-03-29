@@ -25,7 +25,7 @@ class Almacen extends Model
      *
      * @var array
      */
-    protected $fillable = ['almacen', 'propietario', 'gerente', 'pag_web', 'razon_social', 'ruc', 'email', 'fecha_inicio', 'logo', 'slogan', 'name_logo', 'activo', 'telefono', 'fax', 'cel_movi', 'cel_claro', 'watsapp', 'fb', 'tw', 'ins', 'gg', 'funcion_empresa', 'dirMatriz', 'dirSucursal', 'latitud', 'longitud', 'pais_id', 'provincia_id', 'obligado_contabilidad', 'path_certificado', 'clave_certificado', 'modo_ambiente', 'tipo_emision', 'habilitar_facelectronica', 'auth_sri', 'codestablecimiento', 'codpntemision'];
+    protected $fillable = ['almacen', 'propietario', 'gerente', 'pag_web', 'razon_social', 'ruc', 'email', 'fecha_inicio', 'logo', 'slogan', 'name_logo', 'activo', 'telefono', 'fax', 'cel_movi', 'cel_claro', 'watsapp', 'fb', 'tw', 'ins', 'gg', 'funcion_empresa', 'dirMatriz', 'dirSucursal', 'latitud', 'longitud', 'pais_id', 'provincia_id','canton_id', 'obligado_contabilidad', 'path_certificado', 'clave_certificado', 'modo_ambiente', 'tipo_emision', 'habilitar_facelectronica', 'auth_sri', 'codestablecimiento', 'codpntemision'];
 
     public function almacen()
     {

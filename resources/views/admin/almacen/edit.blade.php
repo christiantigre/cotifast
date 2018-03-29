@@ -1,15 +1,15 @@
-@extends('layouts.app')
+@extends('adminlte::page')
 
 @section('content')
+@include('errors.messages')
     <div class="container">
         <div class="row">
-            @include('admin.sidebar')
 
-            <div class="col-md-9">
-                <div class="card">
-                    <div class="card-header">Edit Almacen #{{ $almacen->id }}</div>
-                    <div class="card-body">
-                        <a href="{{ url('/admin/almacen') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
+            <div class="col-md-11">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Editar Almacen #{{ $almacen->almacen }}</div>
+                    <div class="panel-body">
+                        <a href="{{ url('/person/almacen') }}" title="Atras"><button class="btn btn-warning btn-xs"><i class="fa fa-arrow-left" aria-hidden="true"></i> Atras</button></a>
                         <br />
                         <br />
 
@@ -21,11 +21,19 @@
                             </ul>
                         @endif
 
-                        <form method="POST" action="{{ url('/admin/almacen/' . $almacen->id) }}" accept-charset="UTF-8" class="form-horizontal" enctype="multipart/form-data">
-                            {{ method_field('PATCH') }}
+
+                            {!! Form::model($almacen, [
+                            'method' => 'PATCH',
+                            'url' => ['/admin/almacen', $almacen->id],
+                            'class' => 'form-horizontal', 
+                            'enctype'=>'multipart/form-data',
+                            'files' => true,
+                            'accept-charset'=>'UTF-8'
+                        ]) !!}
+
                             {{ csrf_field() }}
 
-                            @include ('admin.almacen.form', ['submitButtonText' => 'Update'])
+                            @include ('admin.almacen.form', ['submitButtonText' => 'Actualizar'])
 
                         </form>
 

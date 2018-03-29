@@ -16,6 +16,9 @@ use Session;
 use Carbon\Carbon;
 use App\SvLog;
 
+use Image;
+use Illuminate\Support\Facades\Input;
+
 class AlmacenController extends Controller
 {
     
@@ -124,8 +127,6 @@ class AlmacenController extends Controller
 
         $requestData = $request->all();
 
-        dd($requestData);
-
         if ($request->hasFile('logo')) {
             $file = Input::file('logo');
             $uploadPath = public_path('uploads/logo/');
@@ -163,10 +164,10 @@ class AlmacenController extends Controller
             Almacen::create($requestData);
             Session::flash('flash_message', 'Guardado correctamente');
         } catch (\Exception $e) {
-            Session::flash('warning', 'Error al Guardar');            
+            Session::flash('warning', 'Error al Guardar '.$e);            
         }
 
-        return redirect('admin/almacen')->with('flash_message', 'Almacen added!');
+        return redirect('admin/almacen');
     }
 
     /**
@@ -194,7 +195,11 @@ class AlmacenController extends Controller
     {
         $almacen = Almacen::findOrFail($id);
 
-        return view('admin.almacen.edit', compact('almacen'));
+        $paises = Pais::orderBy('id', 'DESC')->pluck('pais', 'id');
+        $provincias = Provincias::orderBy('id', 'ASC')->pluck('provincia', 'id');
+        $cantones = Canton::orderBy('id', 'ASC')->pluck('canton', 'id');
+
+        return view('admin.almacen.edit', compact('almacen','paises','provincias','cantones'));
     }
 
     /**
@@ -228,28 +233,45 @@ class AlmacenController extends Controller
         
 
         if ($request->hasFile('logo')) {
-            foreach($request['logo'] as $file){
-                $uploadPath = public_path('/uploads/logo');
-
-                $extension = $file->getClientOriginalExtension();
-                $fileName = rand(11111, 99999) . '.' . $extension;
-
-                $file->move($uploadPath, $fileName);
-                $requestData['logo'] = $fileName;
+            $file = Input::file('logo');
+            $uploadPath = public_path('uploads/logo/');
+            $extension_ext = $file->getClientOriginalExtension();
+            $extension = $file->getClientOriginalName();
+            $image  = Image::make($file->getRealPath());
+            //$image->resize(1200, 900);
+            $fileName = rand(11111, 99999) . '.' . $extension;
+            //$fileName = 'logo.' . $extension_ext;
+            $image->save($uploadPath.$fileName);
+            //$file->move($uploadPath, $fileName);
+            $requestData['logo'] = 'uploads/logo/'.$fileName;
+            $requestData['name_logo'] = $fileName;
+            $item_delete = Almacen::findOrFail($id);   
+            $move = $item_delete['name_logo'];
+            $old = public_path('uploads/logo/').$move;
+            if(!empty($move)){
+                if(\File::exists($old)){
+                    unlink($old);
+                }
             }
         }
+        
 
 
         if ($request->hasFile('path_certificado')) {
-            foreach($request['path_certificado'] as $file){
-                $uploadPath = public_path('/uploads/path_certificado');
-
-                $extension = $file->getClientOriginalExtension();
-                $fileName = rand(11111, 99999) . '.' . $extension;
-
-                $file->move($uploadPath, $fileName);
-                $requestData['path_certificado'] = $fileName;
+            $certificate = Input::file('path_certificado');
+            $uploadPath = public_path('archivos/certificado/');
+            $filename = $certificate->getClientOriginalExtension();
+            $name = $certificate->getClientOriginalName();
+            if (file_exists($uploadPath.$name)) {
+                unlink($uploadPath.$name);                
             }
+            try {
+                    $certificate->move($uploadPath,$name);
+                    $requestData['path_certificado'] = $uploadPath.$name;
+                    $this->genLog("Actualizó archivo firma electrónica"); 
+                } catch (\Exception $e) {
+                    $this->genLog("Error al subir firma electrónica"); 
+                }
         }
 
         $almacen = Almacen::findOrFail($id);

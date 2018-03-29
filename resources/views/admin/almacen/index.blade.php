@@ -1,15 +1,17 @@
 @extends('adminlte::page')
-
 @section('content')
+@include('errors.messages')
         <div class="row">
 
             <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
                 <div class="panel panel-default">
                     <div class="panel-heading">Almacen</div>
                     <div class="panel-body">
+                        @if(empty($almacen))
                         <a href="{{ url('/admin/almacen/create') }}" class="btn btn-success btn-sm" title="Configurar Almacen">
                             <i class="fa fa-plus" aria-hidden="true"></i> Configurar
                         </a>
+                        @endif
 
                         <form method="GET" action="{{ url('/admin/almacen') }}" accept-charset="UTF-8" class="navbar-form navbar-right" role="search">
                             <div class="input-group">
@@ -24,18 +26,17 @@
 
                         <br/>
                         <br/>
+                        <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
                         <div class="table-responsive">
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th>#</th><th>Almacen</th><th>Propietario</th><th>Gerente</th><th>Pag Web</th><th>Razon Social</th><th>Ruc</th><th>Actions</th>
+                                        <th>Actions</th><th>#</th><th>Almacen</th><th>Propietario</th><th>Gerente</th><th>Pag Web</th><th>Razon Social</th><th>Ruc</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                 @foreach($almacen as $item)
                                     <tr>
-                                        <td>{{ $loop->iteration or $item->id }}</td>
-                                        <td>{{ $item->almacen }}</td><td>{{ $item->propietario }}</td><td>{{ $item->gerente }}</td><td>{{ $item->pag_web }}</td><td>{{ $item->razon_social }}</td><td>{{ $item->ruc }}</td>
                                         <td>
                                             <a href="{{ url('/admin/almacen/' . $item->id) }}" title="Ver Almacen"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> Ver</button></a>
                                             <a href="{{ url('/admin/almacen/' . $item->id . '/edit') }}" title="Editar Almacen"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Editar</button></a>
@@ -46,11 +47,15 @@
                                                 <button type="submit" class="btn btn-danger btn-sm" title="Eliminar Almacen" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i> Eliminar</button>
                                             </form>
                                         </td>
+                                        <td>{{ $loop->iteration or $item->id }}</td>
+                                        <td>{{ $item->almacen }}</td><td>{{ $item->propietario }}</td><td>{{ $item->gerente }}</td><td>{{ $item->pag_web }}</td><td>{{ $item->razon_social }}</td><td>{{ $item->ruc }}</td>
+                                        
                                     </tr>
                                 @endforeach
                                 </tbody>
                             </table>
                             <div class="pagination-wrapper"> {!! $almacen->appends(['search' => Request::get('search')])->render() !!} </div>
+                        </div>
                         </div>
 
                     </div>

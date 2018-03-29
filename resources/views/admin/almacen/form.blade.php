@@ -173,7 +173,7 @@
 
         <select name="obligado_contabilidad" class="form-control" id="obligado_contabilidad" >
             @foreach (json_decode('{"1":"SI","0":"NO"}', true) as $optionKey => $optionValue)
-            <option value="{{ $optionKey }}" {{ (isset($facturacionelectronica->obligado_contabilidad) && $facturacionelectronica->obligado_contabilidad == $optionKey) ? 'selected' : ''}}>{{ $optionValue }}</option>
+            <option value="{{ $optionKey }}" {{ (isset($almecen->obligado_contabilidad) && $almacen->obligado_contabilidad == $optionKey) ? 'selected' : ''}}>{{ $optionValue }}</option>
             @endforeach
         </select>
 
@@ -195,13 +195,21 @@
 </div><div class="form-group {{ $errors->has('modo_ambiente') ? 'has-error' : ''}}">
     <label for="modo_ambiente" class="col-md-4 control-label">{{ 'Modo Ambiente' }}</label>
     <div class="col-md-6">
-        <input class="form-control" name="modo_ambiente" type="text" id="modo_ambiente" value="{{ $almacen->modo_ambiente or ''}}" >
+        <select name="modo_ambiente" class="form-control" id="modo_ambiente" >
+            @foreach (json_decode('{"1":"PRUEBAS","0":"PRODUCCIÓN"}', true) as $optionKey => $optionValue)
+            <option value="{{ $optionKey }}" {{ (isset($almecen->modo_ambiente) && $almacen->modo_ambiente == $optionKey) ? 'selected' : ''}}>{{ $optionValue }}</option>
+            @endforeach
+        </select>
         {!! $errors->first('modo_ambiente', '<p class="help-block">:message</p>') !!}
     </div>
 </div><div class="form-group {{ $errors->has('tipo_emision') ? 'has-error' : ''}}">
     <label for="tipo_emision" class="col-md-4 control-label">{{ 'Tipo Emision' }}</label>
     <div class="col-md-6">
-        <input class="form-control" name="tipo_emision" type="text" id="tipo_emision" value="{{ $almacen->tipo_emision or ''}}" >
+        <select name="tipo_emision" class="form-control" id="tipo_emision" >
+            @foreach (json_decode('{"1":"Emisión Normal"}', true) as $optionKey => $optionValue)
+            <option value="{{ $optionKey }}" {{ (isset($almecen->tipo_emision) && $almacen->tipo_emision == $optionKey) ? 'selected' : ''}}>{{ $optionValue }}</option>
+            @endforeach
+        </select>
         {!! $errors->first('tipo_emision', '<p class="help-block">:message</p>') !!}
     </div>
 </div>
@@ -211,7 +219,7 @@
 
         <select name="habilitar_facelectronica" class="form-control" id="habilitar_facelectronica" >
             @foreach (json_decode('{"1":"SI","0":"NO"}', true) as $optionKey => $optionValue)
-            <option value="{{ $optionKey }}" {{ (isset($almacen->habilitar_facelectronica) && $facturacionelectronica->habilitar_facelectronica == $optionKey) ? 'selected' : ''}}>{{ $optionValue }}</option>
+            <option value="{{ $optionKey }}" {{ (isset($almacen->habilitar_facelectronica) && $almacen->habilitar_facelectronica == $optionKey) ? 'selected' : ''}}>{{ $optionValue }}</option>
             @endforeach
         </select>
 
