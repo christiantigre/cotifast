@@ -163,8 +163,10 @@ class AlmacenController extends Controller
         try {
             Almacen::create($requestData);
             Session::flash('flash_message', 'Guardado correctamente');
+            $this->genLog("Registró información de la empresa");
         } catch (\Exception $e) {
             Session::flash('warning', 'Error al Guardar '.$e);            
+            $this->genLog("No se registró la empresa");
         }
 
         return redirect('admin/almacen');
@@ -253,6 +255,7 @@ class AlmacenController extends Controller
                     unlink($old);
                 }
             }
+            $this->genLog("Actualizó el logo de la empresa");
         }
         
 
@@ -274,10 +277,19 @@ class AlmacenController extends Controller
                 }
         }
 
-        $almacen = Almacen::findOrFail($id);
-        $almacen->update($requestData);
+        try {
+            $almacen = Almacen::findOrFail($id);
+            $almacen->update($requestData);
+            Session::flash('flash_message', 'Actualizado correctamente');
+            $this->genLog("Actualizó información de la empresa");
+        } catch (\Exception $e) {
+            $this->genLog("Error al actualizar información de la empresa");
+            Session::flash('warning', 'Error al Actualizar '.$e);            
+        }
 
-        return redirect('admin/almacen')->with('flash_message', 'Almacen updated!');
+       
+
+        return redirect('admin/almacen');
     }
 
     /**

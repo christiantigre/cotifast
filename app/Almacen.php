@@ -31,5 +31,18 @@ class Almacen extends Model
     {
         return $this->belongsTo('App\Almacen');
     }
+
+    public function pais()
+    {
+      return $this->belongsTo('App\Pais');
+    }
+    public function provincia()
+    {
+      return $this->belongsTo('App\Provincias');
+    }
+    public function canton()
+    {
+      return $this->belongsTo('App\Canton');
+    }
     
 }

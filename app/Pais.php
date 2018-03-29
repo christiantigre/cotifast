@@ -15,5 +15,10 @@ class Pais extends Model
     public function provincias(){
     	return $this->hasMany(Provincias::class);
     }
+
+    public function almacen()
+    {
+        return $this->hasMany('App\Almacen', 'id');
+    }
     
 }

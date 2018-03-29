@@ -20,4 +20,8 @@ class Canton extends Model
     	return $this->belongsTo(Provincias::class);
     }
 
+    public function almacen()
+    {
+        return $this->hasMany('App\Almacen', 'id');
+    }
 }

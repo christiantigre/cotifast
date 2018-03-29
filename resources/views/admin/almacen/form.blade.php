@@ -196,7 +196,7 @@
     <label for="modo_ambiente" class="col-md-4 control-label">{{ 'Modo Ambiente' }}</label>
     <div class="col-md-6">
         <select name="modo_ambiente" class="form-control" id="modo_ambiente" >
-            @foreach (json_decode('{"1":"PRUEBAS","0":"PRODUCCIÓN"}', true) as $optionKey => $optionValue)
+            @foreach (json_decode('{"0":"PRUEBAS","1":"PRODUCCIÓN"}', true) as $optionKey => $optionValue)
             <option value="{{ $optionKey }}" {{ (isset($almecen->modo_ambiente) && $almacen->modo_ambiente == $optionKey) ? 'selected' : ''}}>{{ $optionValue }}</option>
             @endforeach
         </select>
@@ -206,7 +206,7 @@
     <label for="tipo_emision" class="col-md-4 control-label">{{ 'Tipo Emision' }}</label>
     <div class="col-md-6">
         <select name="tipo_emision" class="form-control" id="tipo_emision" >
-            @foreach (json_decode('{"1":"Emisión Normal"}', true) as $optionKey => $optionValue)
+            @foreach (json_decode('{"0":"Emisión Normal"}', true) as $optionKey => $optionValue)
             <option value="{{ $optionKey }}" {{ (isset($almecen->tipo_emision) && $almacen->tipo_emision == $optionKey) ? 'selected' : ''}}>{{ $optionValue }}</option>
             @endforeach
         </select>
