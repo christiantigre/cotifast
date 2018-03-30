@@ -38,5 +38,6 @@ Route::group(['prefix' => 'admin'], function () {
   Route::resource('/subcategoria', 'Admin\\SubcategoriaController');
   Route::resource('/producto', 'Admin\\ProductoController');
   Route::resource('/descuento', 'Admin\\DescuentoController');
+  Route::resource('/cliente', 'Admin\\ClienteController');
 });
 

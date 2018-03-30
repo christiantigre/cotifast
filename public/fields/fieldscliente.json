@@ -1,0 +1,153 @@
+{
+    "fields": [
+        {
+            "name": "nombre",
+            "type": "string"
+        },
+        {
+            "name": "apellido",
+            "type": "string"
+        },
+        {
+            "name": "cedula",
+            "type": "number"
+        },
+        {
+            "name": "ruc",
+            "type": "number"
+        },
+        {
+            "name": "email",
+            "type": "email"
+        },        
+        {
+            "name": "telefono",
+            "type": "number"
+        },        
+        {
+            "name": "cel_movi",
+            "type": "number"
+        },        
+        {
+            "name": "cel_claro",
+            "type": "number"
+        },
+        {
+            "name": "wts",
+            "type": "number"
+        },
+        {
+            "name": "direccion",
+            "type": "string"
+        },
+        {
+            "name": "fecha_nacimiento",
+            "type": "date"
+        },
+        {
+            "name": "estado_civil",
+            "type": "select",
+            "options": {
+                "1": "Soltero/a",
+                "2": "Casado/a",
+                "3": "Divorciado/a",
+                "4": "Viudo/a",
+                "5": "Union de Hecho"
+            }
+        },
+        {
+            "name": "genero",
+            "type": "select",
+            "options": {
+                "1": "Masculino",
+                "0": "Femanino"
+            }
+        },
+        {
+            "name": "activo",
+            "type": "select",
+            "options": {
+                "1": "Activo",
+                "0": "Inactivo"
+            }
+        }, 
+        {
+            "name": "pais_id",
+            "type": "integer#unsigned"
+        },
+        {
+            "name": "provincia_id",
+            "type": "integer#unsigned"
+        },
+        {
+            "name": "canton_id",
+            "type": "integer#unsigned"
+        }
+    ],
+    "foreign_keys": [
+        {
+            "column": "pain_id",
+            "references": "id",
+            "on": "paises"
+        },
+        {
+            "column": "provincia_id",
+            "references": "id",
+            "on": "provincias"
+        },
+        {
+            "column": "canton_id",
+            "references": "id",
+            "on": "cantons"
+        }
+    ],
+    "relationships": [
+        {
+            "name": "cliente",
+            "type": "belongsTo",
+            "class": "App\\Cliente"
+        }
+    ],
+    "validations": [
+        {
+            "field": "nombre",
+            "rules": "nullable|max:75"
+        },
+        {
+            "field": "apellido",
+            "rules": "nullable|max:75"
+        },
+        {
+            "field": "cedula",
+            "rules": "nullable"
+        },
+        {
+            "field": "ruc",
+            "rules": "nullable"
+        },
+        {
+            "field": "email",
+            "rules": "nullable"
+        },
+        {
+            "field": "telefono",
+            "rules": "nullable"
+        },        
+        {
+            "field": "cel_movi",
+            "rules": "nullable"
+        },
+        {
+            "field": "cel_claro",
+            "rules": "nullable"
+        },
+        {
+            "field": "wts",
+            "rules": "nullable"
+        },
+        {
+            "field": "direccion",
+            "rules": "nullable|max:191"
+        }
+    ]
+}

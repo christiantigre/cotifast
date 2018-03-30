@@ -24,5 +24,10 @@ class Parroquias extends Model
     {
         return $this->hasMany('App\Almacen', 'id');
     }
+
+    public function cliente()
+    {
+        return $this->hasMany('App\Cliente', 'id');
+    }
     
 }

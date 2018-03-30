@@ -134,7 +134,7 @@ return [
         ],
         [
             'text' => 'Clientes',
-            'url'  => 'admin/producto',
+            'url'  => 'admin/cliente',
             'icon' => 'group',
         ],
         [
