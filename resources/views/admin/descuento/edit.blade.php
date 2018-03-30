@@ -7,9 +7,9 @@
 
             <div class="col-md-11">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Editar Marca #{{ $marca->Marca }}</div>
+                    <div class="panel-heading">Editar Descuento #{{ $descuento->descuento }}</div>
                     <div class="panel-body">
-                        <a href="{{ url('/admin/marca') }}" title="Atras"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Atras</button></a>
+                        <a href="{{ url('/admin/descuento') }}" title="Atras"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Atras</button></a>
                         <br />
                         <br />
 
@@ -21,18 +21,17 @@
                             </ul>
                         @endif
 
-                        {!! Form::model($marca, [
+                        {!! Form::model($descuento, [
                             'method' => 'PATCH',
-                            'url' => ['/admin/marca', $marca->id],
+                            'url' => ['/admin/descuento', $descuento->id],
                             'class' => 'form-horizontal', 
                             'enctype'=>'multipart/form-data',
                             'files' => true,
                             'accept-charset'=>'UTF-8'
                         ]) !!}
-
                             {{ csrf_field() }}
 
-                            @include ('admin.marca.form', ['submitButtonText' => 'Actualizar'])
+                            @include ('admin.descuento.form', ['submitButtonText' => 'Actualizar'])
 
                         </form>
 
@@ -40,4 +39,5 @@
                 </div>
             </div>
         </div>
+    </div>
 @endsection

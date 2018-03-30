@@ -14,8 +14,8 @@ class CategoryTableSeeder extends Seeder
     {
         Categoria::create( [
 'id'=>1,
-'categoria'=>'Banner',
-'detalle'=>'Baner de 12mm x 35mm',
+'categoria'=>'s/n',
+'detalle'=>'s/n',
 'activo'=>1,
 'created_at'=>'2018-03-30 00:49:08',
 'updated_at'=>'2018-03-30 00:59:50'
@@ -83,5 +83,15 @@ Categoria::create( [
 'created_at'=>'2018-03-30 01:03:43',
 'updated_at'=>'2018-03-30 01:04:16'
 ] );
+
+Categoria::create( [
+'id'=>9,
+'categoria'=>'Banner',
+'detalle'=>'Baner de 12mm x 35mm',
+'activo'=>1,
+'created_at'=>'2018-03-30 00:49:08',
+'updated_at'=>'2018-03-30 00:59:50'
+] );
+
     }
 }

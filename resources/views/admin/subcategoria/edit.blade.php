@@ -2,13 +2,12 @@
 
 @section('content')
 @include('errors.messages')
-    <div class="container">
         <div class="row">
 
             <div class="col-md-11">
                 <div class="panel panel-default">
                     <div class="panel-heading">Editar Subcategorium #{{ $subcategorium->id }}</div>
-                    <div class="card-body">
+                    <div class="panel-body">
                         <a href="{{ url('/admin/subcategoria') }}" title="Atras"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Atras</button></a>
                         <br />
                         <br />
@@ -38,5 +37,4 @@
                     </div>
                 </div>
             </div>
-        </div>
 @endsection

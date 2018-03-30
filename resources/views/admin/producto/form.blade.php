@@ -23,7 +23,7 @@
         {!! $errors->first('pre_venta', '<p class="help-block">:message</p>') !!}
     </div>
 </div><div class="form-group {{ $errors->has('cantidad') ? 'has-error' : ''}}">
-    <label for="cantidad" class="col-md-4 control-label">{{ 'Cantidad' }}</label>
+    <label for="cantidad" class="col-md-4 control-label">{{ 'Cantidad Ingreso' }}</label>
     <div class="col-md-6">
 
         {!! Form::text('cantidad', null, ['class' => 'form-control','autofocus'=>'autofocus', 'id'=>'cantidad']), old('cantidad')  !!}
@@ -35,22 +35,10 @@
         {!! Form::text('fecha_ingreso', null, ['class' => 'form-control datepicker','autofocus'=>'autofocus', 'id'=>'fecha_ingreso']), old('fecha_ingreso')  !!}
         {!! $errors->first('fecha_ingreso', '<p class="help-block">:message</p>') !!}
     </div>
-</div><div class="form-group {{ $errors->has('compras') ? 'has-error' : ''}}">
-    <label for="compras" class="col-md-4 control-label">{{ 'Compras' }}</label>
-    <div class="col-md-6">
-        {!! Form::text('compras', null, ['class' => 'form-control datepicker','autofocus'=>'autofocus', 'id'=>'compras']), old('compras')  !!}
-        {!! $errors->first('compras', '<p class="help-block">:message</p>') !!}
-    </div>
-</div><div class="form-group {{ $errors->has('ventas') ? 'has-error' : ''}}">
-    <label for="ventas" class="col-md-4 control-label">{{ 'Ventas' }}</label>
-    <div class="col-md-6">
-        {!! Form::text('ventas', null, ['class' => 'form-control datepicker','autofocus'=>'autofocus', 'id'=>'ventas']), old('ventas')  !!}
-        {!! $errors->first('ventas', '<p class="help-block">:message</p>') !!}
-    </div>
 </div><div class="form-group {{ $errors->has('saldo') ? 'has-error' : ''}}">
-    <label for="saldo" class="col-md-4 control-label">{{ 'Saldo' }}</label>
+    <label for="saldo" class="col-md-4 control-label">{{ 'Stock' }}</label>
     <div class="col-md-6">
-        {!! Form::text('saldo', null, ['class' => 'form-control datepicker','autofocus'=>'autofocus', 'id'=>'saldo']), old('saldo')  !!}
+        {!! Form::text('saldo', null, ['class' => 'form-control ','autofocus'=>'autofocus','readonly'=>'readonly', 'id'=>'saldo']), old('saldo')  !!}
         
         {!! $errors->first('saldo', '<p class="help-block">:message</p>') !!}
     </div>
@@ -128,7 +116,7 @@
 
 <div class="form-group">
     <div class="col-md-offset-4 col-md-4">
-        <input class="btn btn-primary" type="submit" value="{{ $submitButtonText or 'Create' }}">
+        <input class="btn btn-primary" type="submit" value="{{ $submitButtonText or 'Crear' }}">
     </div>
 </div>
 

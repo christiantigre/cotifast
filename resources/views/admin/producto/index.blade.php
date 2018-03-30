@@ -29,14 +29,28 @@
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th>#</th><th>Producto</th><th>Cod Barra</th><th>Pre Compra</th><th>Actions</th>
+                                        <th>#</th>
+                                        <th>Imagen</th>
+                                        <th>Producto</th>
+                                        <th>Cod Barra</th>
+                                        <th>Precio al cliente
+                                        <th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                 @foreach($producto as $item)
                                     <tr>
                                         <td>{{ $loop->iteration or $item->id }}</td>
-                                        <td>{{ $item->producto }}</td><td>{{ $item->cod_barra }}</td><td>{{ $item->pre_compra }}</td>
+                                        <td>
+                                            @if(empty($item->imagen))
+                                   <center>-</center>
+                                   @else
+                                   <a href="{{ asset($item->imagen) }}" target="_blanck">
+                                    <img src="{{ asset($item->imagen) }}" class="navbar-brand img-responsive img-circle brand-centered">
+                                </a>
+                                @endif
+                                        </td>
+                                        <td>{{ $item->producto }}</td><td>{{ $item->cod_barra }}</td><td>{{ number_format($item->pre_venta,2)}}</td>
                                         <td>
                                             <a href="{{ url('/admin/producto/' . $item->id) }}" title="Ver Producto"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> Ver</button></a>
                                             <a href="{{ url('/admin/producto/' . $item->id . '/edit') }}" title="Editar Producto"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Editar</button></a>

@@ -147,7 +147,7 @@ return [
             'icon'    => 'gear',
             'submenu' => [
                 [
-                    'text' => 'Local',
+                    'text' => 'Entidad',
                     'url'  => 'admin/almacen',
                 ],
                 [
@@ -161,6 +161,10 @@ return [
                 [
                     'text' => 'Marcas',
                     'url'  => 'admin/marca',
+                ],
+                [
+                    'text' => 'Descuento',
+                    'url'  => 'admin/descuento',
                 ],
             ],
         ],
