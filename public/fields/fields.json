@@ -1,71 +1,70 @@
 {
     "fields": [
         {
-            "name": "producto",
+            "name": "nombre",
             "type": "string"
         },
         {
-            "name": "cod_barra",
+            "name": "apellido",
             "type": "string"
         },
         {
-            "name": "pre_compra",
+            "name": "cedula",
+            "type": "number"
+        },
+        {
+            "name": "ruc",
+            "type": "number"
+        },
+        {
+            "name": "email",
+            "type": "email"
+        },        
+        {
+            "name": "telefono",
+            "type": "number"
+        },        
+        {
+            "name": "cel_movi",
+            "type": "number"
+        },        
+        {
+            "name": "cel_claro",
+            "type": "number"
+        },
+        {
+            "name": "wts",
+            "type": "number"
+        },
+        {
+            "name": "direccion",
             "type": "string"
         },
         {
-            "name": "pre_venta",
-            "type": "string"
-        },
-        {
-            "name": "cantidad",
-            "type": "string"
-        },
-        {
-            "name": "fecha_ingreso",
+            "name": "fecha_nacimiento",
             "type": "date"
         },
         {
-            "name": "compras",
+            "name": "tipo_usuario",
             "type": "string"
         },
         {
-            "name": "ventas",
-            "type": "string"
-        },
-        {
-            "name": "saldo",
-            "type": "string"
-        },
-        {
-            "name": "imagen",
-            "type": "file"
-        },
-        {
-            "name": "name_img",
-            "type": "string"
-        },
-        {
-            "name": "nuevo",
+            "name": "estado_civil",
             "type": "select",
             "options": {
-                "1": "SI",
-                "0": "NO"
+                "1": "Soltero/a",
+                "2": "Casado/a",
+                "3": "Divorciado/a",
+                "4": "Viudo/a",
+                "5": "Union de Hecho"
             }
         },
         {
-            "name": "promocion",
+            "name": "genero",
             "type": "select",
             "options": {
-                "1": "SI",
-                "0": "NO"
-            }
-        },
-        {
-            "name": "catalogo",
-            "type": "select",
-            "options": {
-                "1": "SI",
-                "0": "NO"
+                "1": "Masculino",
+                "0": "Femanino"
             }
         },
         {
@@ -75,52 +74,84 @@
                 "1": "Activo",
                 "0": "Inactivo"
             }
-        },        
+        }, 
         {
-            "name": "propaganda",
-            "type": "text"
-        },
-        {
-            "name": "categoria_id",
+            "name": "pais_id",
             "type": "integer#unsigned"
         },
         {
-            "name": "subcategoria_id",
+            "name": "provincia_id",
             "type": "integer#unsigned"
         },
         {
-            "name": "marca_id",
+            "name": "canton_id",
             "type": "integer#unsigned"
         }
     ],
     "foreign_keys": [
         {
-            "column": "categoria_id",
+            "column": "pais_id",
             "references": "id",
-            "on": "categorias"
+            "on": "paises"
         },
         {
-            "column": "marca_id",
+            "column": "provincia_id",
             "references": "id",
-            "on": "marcas"
+            "on": "provincias"
         },
         {
-            "column": "subcategoria_id",
+            "column": "canton_id",
             "references": "id",
-            "on": "subcategorias"
+            "on": "cantons"
         }
     ],
     "relationships": [
         {
-            "name": "producto",
+            "name": "cliente",
             "type": "belongsTo",
-            "class": "App\\Producto"
+            "class": "App\\Cliente"
         }
     ],
     "validations": [
         {
-            "field": "producto",
-            "rules": "max:191"
+            "field": "nombre",
+            "rules": "nullable|max:75"
+        },
+        {
+            "field": "apellido",
+            "rules": "nullable|max:75"
+        },
+        {
+            "field": "cedula",
+            "rules": "nullable"
+        },
+        {
+            "field": "ruc",
+            "rules": "nullable"
+        },
+        {
+            "field": "email",
+            "rules": "nullable"
+        },
+        {
+            "field": "telefono",
+            "rules": "nullable"
+        },        
+        {
+            "field": "cel_movi",
+            "rules": "nullable"
+        },
+        {
+            "field": "cel_claro",
+            "rules": "nullable"
+        },
+        {
+            "field": "wts",
+            "rules": "nullable"
+        },
+        {
+            "field": "direccion",
+            "rules": "nullable|max:191"
         }
     ]
 }

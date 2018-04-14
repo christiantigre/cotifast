@@ -23,10 +23,8 @@ Route::group(['prefix' => 'admin'], function () {
   Route::get('/login', 'AdminAuth\LoginController@showLoginForm')->name('login');
   Route::post('/login', 'AdminAuth\LoginController@login');
   Route::post('/logout', 'AdminAuth\LoginController@logout')->name('logout');
-
   Route::get('/register', 'AdminAuth\RegisterController@showRegistrationForm')->name('register');
   Route::post('/register', 'AdminAuth\RegisterController@register');
-
   Route::post('/password/email', 'AdminAuth\ForgotPasswordController@sendResetLinkEmail')->name('password.request');
   Route::post('/password/reset', 'AdminAuth\ResetPasswordController@reset')->name('password.email');
   Route::get('/password/reset', 'AdminAuth\ForgotPasswordController@showLinkRequestForm')->name('password.reset');
@@ -39,5 +37,13 @@ Route::group(['prefix' => 'admin'], function () {
   Route::resource('/producto', 'Admin\\ProductoController');
   Route::resource('/descuento', 'Admin\\DescuentoController');
   Route::resource('/cliente', 'Admin\\ClienteController');
+  Route::resource('/perfil', 'Admin\\PerfilController');
+  Route::get('/cuenta_perfil', 'Admin\\PerfilController@cuenta_perfil');
+  Route::resource('/proforma', 'Admin\\ProformaController');
+  Route::get('/extraerdatoscli/','Admin\\ProformaController@extraerdatoscliente');
+  Route::post('/saveprod/', 'ComponentController@saveproducto');
+  Route::get('/listcartitems/', 'ComponentController@listallitems');
+  Route::post('/trashItem/','ComponentController@trashItem');
+  Route::post('/deleteItem/','ComponentController@deleteItem');
 });
 

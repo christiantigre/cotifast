@@ -1,0 +1,48 @@
+{
+    "fields": [
+        {
+            "name": "fecha_proforma",
+            "type": "date"
+        },
+        {
+            "name": "total",
+            "type": "string"
+        },
+        {
+            "name": "destinatario_mail",
+            "type": "email"
+        },
+        {
+            "name": "secuencial_proforma",
+            "type": "number"
+        },
+        {
+            "name": "detalles_proforma",
+            "type": "text"
+        },  
+        {
+            "name": "cliente_id",
+            "type": "integer#unsigned"
+        }
+    ],
+    "foreign_keys": [
+        {
+            "column": "cliente_id",
+            "references": "id",
+            "on": "clientes"
+        }
+    ],
+    "relationships": [
+        {
+            "name": "cliente",
+            "type": "belongsTo",
+            "class": "App\\Cliente"
+        }
+    ],
+    "validations": [
+        {
+            "field": "fecha_proforma",
+            "rules": "required"
+        }
+    ]
+}

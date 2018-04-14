@@ -3,3 +3,19 @@ php artisan crud:generate Producto --fields_from_file="C:/Users/Andres/Dropbox/D
 php artisan crud:generate Descuento --fields_from_file="C:/Users/Andres/Dropbox/Dropbox/cotifast/public/fields/fieldsdescuentos.json" --view-path=admin --controller-namespace=Admin --route-group=admin
 
 php artisan crud:generate Cliente --fields_from_file="C:/Users/Andres/Dropbox/Dropbox/cotifast/public/fields/fieldscliente.json" --view-path=admin --controller-namespace=Admin --route-group=admin
+
+
+
+
+
+
+
+
+
+
+
+
+
+php artisan crud:generate Perfil --fields_from_file="C:/Users/Andres/Dropbox/Dropbox/cotifast/public/fields/fields.json" --view-path=admin --controller-namespace=Admin --route-group=admin
+
+php artisan crud:generate Proforma --fields_from_file="C:/Users/Andres/Dropbox/Dropbox/cotifast/public/fields/fieldproforma.json" --view-path=admin --controller-namespace=Admin --route-group=admin

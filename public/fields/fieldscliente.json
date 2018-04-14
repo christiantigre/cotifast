@@ -1,15 +1,15 @@
 {
     "fields": [
         {
-            "name": "nombre",
+            "name": "fecha_proforma",
             "type": "string"
         },
         {
-            "name": "apellido",
+            "name": "nombre_emitente",
             "type": "string"
         },
         {
-            "name": "cedula",
+            "name": "ced_emitente",
             "type": "number"
         },
         {

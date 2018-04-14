@@ -31,8 +31,7 @@ class Cliente extends Model
     {
         return $this->belongsTo('App\Cliente');
     }
-
-     public function pais()
+    public function pais()
     {
       return $this->belongsTo('App\Pais');
     }
@@ -43,6 +42,10 @@ class Cliente extends Model
     public function canton()
     {
       return $this->belongsTo('App\Canton');
+    }
+    public function proforma()
+    {
+        return $this->hasMany('App\Proforma');
     }
     
 }

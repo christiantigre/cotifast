@@ -124,12 +124,12 @@ return [
         'ACCOUNT SETTINGS',
         [
             'text' => 'Cuenta',
-            'url'  => 'admin/settings',
+            'url'  => 'admin/cuenta_perfil',
             'icon' => 'user',
         ],
         [
             'text' => 'Proforma',
-            'url'  => 'admin/producto',
+            'url'  => 'admin/proforma',
             'icon' => 'envelope-square',
         ],
         [
