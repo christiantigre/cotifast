@@ -63,7 +63,7 @@
                 >{{ trans('adminlte::adminlte.register') }}</button>
             </form>
             <div class="auth-links">
-                <a href="{{ url(config('adminlte.login_url', 'login')) }}"
+                <a href="{{ url(admin/login') }}"
                    class="text-center">{{ trans('adminlte::adminlte.i_already_have_a_membership') }}</a>
             </div>
         </div>

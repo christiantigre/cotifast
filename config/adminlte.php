@@ -108,20 +108,20 @@ return [
     */
 
     'menu' => [
-        'MAIN NAVIGATION',
+        'MENU PRINCIPAL',
         [
             'text' => 'Blog',
             'url'  => 'admin/blog',
             'can'  => 'manage-blog',
         ],
         [
-            'text'        => 'Pages',
-            'url'         => 'admin/pages',
+            'text'        => 'Escritorio',
+            'url'         => 'admin/administracion',
             'icon'        => 'file',
             'label'       => 4,
             'label_color' => 'success',
         ],
-        'ACCOUNT SETTINGS',
+        'EVENTOS',
         [
             'text' => 'Cuenta',
             'url'  => 'admin/cuenta_perfil',
