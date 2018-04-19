@@ -45,5 +45,11 @@ Route::group(['prefix' => 'admin'], function () {
   Route::get('/listcartitems/', 'ComponentController@listallitems');
   Route::post('/trashItem/','ComponentController@trashItem');
   Route::post('/deleteItem/','ComponentController@deleteItem');
+  Route::get('/proforma/verproforma/{id}','Admin\\ProformaController@verproforma');
+  Route::get('/proforma/downloadproforma/{id}','Admin\\ProformaController@downloadproforma');
+  Route::get('/proforma/send_proforma/{id}','Admin\\ProformaController@send_mail');
+  Route::resource('/iva', 'Admin\\IvaController');
+  Route::resource('/clausula', 'Admin\\ClausulaController');
 });
+
 

@@ -16,6 +16,11 @@ class CreateProformasTable extends Migration
             $table->increments('id');
             $table->date('fecha_proforma')->nullable();
             $table->string('total')->nullable();
+            $table->string('subtotal')->nullable();
+            $table->string('iva_cero')->nullable();
+            $table->string('descuento')->nullable();
+            $table->string('iva_calculado')->nullable();
+            $table->string('porcentaje_iva')->nullable();
             $table->string('destinatario_mail')->nullable();
             $table->text('secuencial_proforma')->nullable();
             $table->text('detalles_proforma')->nullable();

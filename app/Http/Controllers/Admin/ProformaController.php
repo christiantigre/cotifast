@@ -11,11 +11,16 @@ use App\Cliente;
 use App\Producto;
 use App\item_proforma;
 use App\itemsdetall;
+use App\Almacen;
 
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Session;
 use App\SvLog;
+use App\Clausula;
+
+use App\Mail\SendMail;
+use Illuminate\Support\Facades\Mail;
 
 class ProformaController extends Controller
 {
@@ -42,7 +47,7 @@ class ProformaController extends Controller
                 ->orWhere('cliente_id', 'LIKE', "%$keyword%")
                 ->paginate($perPage);
         } else {
-            $proforma = Proforma::paginate($perPage);
+            $proforma = Proforma::orderBy('id','ACS')->paginate($perPage);
         }
 
         return view('admin.proforma.index', compact('proforma'));
@@ -109,22 +114,30 @@ class ProformaController extends Controller
 			'fecha_proforma' => 'required'
 		]);
         $producto = item_proforma::get();
-        $requestData = $request->all();
+        $dataProforma = $request->all();
         $carbon = new Carbon();
         $date = $carbon->now();
-        $dataVenta['fecha_proforma'] = $date->format('Y-m-d');
-        $dataVenta['secuencial_proforma'] = $request->secuencial_proforma;
-        $dataVenta['vendedor'] = $request->vendedor;
-        $dataVenta['cliente_id'] = $request->cliente_id;
-        $dataVenta['cliente'] = $request->cliente;
-        $dataVenta['documento_ruc'] = $request->documento_ruc;
-        $dataVenta['documento_ced'] = $request->documento_ced;
-        $dataVenta['destinatario_mail'] = $request->destinatario_mail;
-        $dataVenta['contactos'] = $request->contactos;
-        $dataVenta['direccion_cliente'] = $request->direccion_cliente;
+        $dataProforma['fecha_proforma'] = $date->format('Y-m-d');
+        $dataProforma['secuencial_proforma'] = $request->secuencial_proforma;
+        $dataProforma['vendedor'] = $request->vendedor;
+        $dataProforma['cliente_id'] = $request->cliente_id;
+        $dataProforma['cliente'] = $request->cliente;
+        $dataProforma['documento_ruc'] = $request->documento_ruc;
+        $dataProforma['documento_ced'] = $request->documento_ced;
+        $dataProforma['destinatario_mail'] = $request->destinatario_mail;
+        $dataProforma['contactos'] = $request->contactos;
+        $dataProforma['direccion_cliente'] = $request->direccion_cliente;
+
+        $dataProforma['subtotal'] = $request['subtotal'];
+        $dataProforma['iva_cero'] = $request['iva_cero'];
+        $dataProforma['iva_calculado'] = $request['iva_calculado'];
+        $dataProforma['porcentaje_iva'] = $request['porcentaje_iva'];
+        $dataProforma['id_iva'] = $request['idiva']; 
+        $dataProforma['total'] = $request['total']; 
+
         try {
             
-            $proforma = Proforma::create($requestData);
+            $proforma = Proforma::create($dataProforma);
             foreach ($producto as $product) {
                 $requestData_returned = $this->saveItem($product, $proforma->id);
                 $requestData_returned->save();
@@ -166,7 +179,110 @@ class ProformaController extends Controller
 
         return view('admin.proforma.show', compact('proforma'));
     }
+    
+    public function verproforma($id)
+    {
+        $this->genLog("Visualizó proforma id: ".$id);
 
+            //$proforma = Proforma::orderBy('id', 'DESC')->where('id', $id)->get();
+            $proforma = Proforma::findOrFail($id);
+            $detalles_proforma = $proforma->detalles_proforma;
+            $num_secuencial = $proforma->secuencial_proforma;
+            $nom_proforma = "Proforma-#.-".$num_secuencial;
+            $numero_secuencial = $proforma->secuencial_proforma;
+            $detallproforma= itemsdetall::where('id_proforma',$id)->get();
+            $almacen = Almacen::orderBy('id', 'DESC')->where('id', 1)->get();
+            $clausulas = Clausula::Where('activo','1')->get();
+            //$preclausulas = "Desarrollado por PcSolution´s Gualaceo - Cuenca, Av. Jaime Roldós y Manuel Moreno.";
+            $pdf     = \PDF::loadView('pdf.proforma', [
+                'proforma'      => $proforma,
+                'detallproforma'    => $detallproforma,
+                'detalles_proforma' => $detalles_proforma,
+                'almacen'        => $almacen,
+                'clausulas'  => $clausulas,
+                'nom_proforma'  => $nom_proforma,
+                'numero_secuencial'=>$numero_secuencial
+            ]);
+
+        //return $pdf->download($nom_factura.'.pdf');
+            return $pdf->stream();
+            return view('pdf.proforma',compact('proforma','detallproforma','detalles_proforma','almacen','clausulas','nom_proforma','numero_secuencial','preclausula'));
+
+        //return view('admin.proforma.show', compact('proforma'));
+    }
+
+    public function downloadproforma($id)
+    {
+        $this->genLog("Descargó proforma id: ".$id);
+
+            //$proforma = Proforma::orderBy('id', 'DESC')->where('id', $id)->get();
+            $proforma = Proforma::findOrFail($id);
+            $detalles_proforma = $proforma->detalles_proforma;
+            $num_secuencial = $proforma->secuencial_proforma;
+            $nom_proforma = "Proforma-#.-".$num_secuencial;
+            $numero_secuencial = $proforma->secuencial_proforma;
+            $detallproforma= itemsdetall::where('id_proforma',$id)->get();
+            $almacen = Almacen::orderBy('id', 'DESC')->where('id', 1)->get();
+            $clausulas = Clausula::Where('activo','1')->get();
+            //$preclausulas = "Desarrollado por PcSolution´s Gualaceo - Cuenca, Av. Jaime Roldós y Manuel Moreno.";
+            $pdf     = \PDF::loadView('pdf.proforma', [
+                'proforma'      => $proforma,
+                'detallproforma'    => $detallproforma,
+                'detalles_proforma' => $detalles_proforma,
+                'almacen'        => $almacen,
+                'clausulas'  => $clausulas,
+                'nom_proforma'  => $nom_proforma,
+                'numero_secuencial'=>$numero_secuencial
+            ]);
+
+        return $pdf->download($nom_proforma.'.pdf');
+    }
+
+    public function send_mail($id){
+
+        $this->genLog("Descargó proforma id: ".$id);
+
+            //$proforma = Proforma::orderBy('id', 'DESC')->where('id', $id)->get();
+            $proforma = Proforma::findOrFail($id);
+            $detalles_proforma = $proforma->detalles_proforma;
+            $num_secuencial = $proforma->secuencial_proforma;
+            $nom_proforma = "Proforma-#.-".$num_secuencial;
+            $numero_secuencial = $proforma->secuencial_proforma;
+            $detallproforma= itemsdetall::where('id_proforma',$id)->get();
+            $almacen = Almacen::orderBy('id', 'DESC')->where('id', 1)->get();
+            $clausulas = Clausula::Where('activo','1')->get();
+            //$preclausulas = "Desarrollado por PcSolution´s Gualaceo - Cuenca, Av. Jaime Roldós y Manuel Moreno.";
+            $pdf     = \PDF::loadView('pdf.proforma', [
+                'proforma'      => $proforma,
+                'detallproforma'    => $detallproforma,
+                'detalles_proforma' => $detalles_proforma,
+                'almacen'        => $almacen,
+                'clausulas'  => $clausulas,
+                'nom_proforma'  => $nom_proforma,
+                'numero_secuencial'=>$numero_secuencial
+            ])->save(public_path('/files/'.$nom_proforma.'.pdf'));
+
+
+        $data = array(
+            'name'    => $proforma->cliente,
+            'mail'    => $proforma->destinatario_mail,
+            'subject' => 'Le adjunto el archivo cotizado que corresponde a su pedido.',
+            'archivo' => public_path('/files/'.$nom_proforma.'.pdf')
+        );
+        $archivo = public_path('/files/'.$nom_proforma.'.pdf');
+        $to = $proforma->destinatario_mail;
+        Mail::to($to)->send(new SendMail($data,$archivo,$nom_proforma));
+            if (file_exists($archivo)) {
+                unlink($archivo);                
+            }
+
+            Proforma::find($id)->update(['enviado' => 1]);
+
+            Session::flash('flash_message', 'Cotización Enviada correctamente a '.$proforma->cliente); 
+
+            return redirect('admin/proforma');
+
+    }
     /**
      * Show the form for editing the specified resource.
      *

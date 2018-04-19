@@ -135,7 +135,7 @@ class AlmacenController extends Controller
             $image  = Image::make($file->getRealPath());
             //$image->resize(1200, 900);
             $fileName = rand(11111, 99999) . '.' . $extension;
-            $image->save($uploadPath.$fileName);
+            $image->save($uploadPath.$fileName, 50);
             //$file->move($uploadPath, $fileName);
             $requestData['logo'] = 'uploads/logo/'.$fileName;
             $requestData['name_logo'] = $fileName;
@@ -240,10 +240,10 @@ class AlmacenController extends Controller
             $extension_ext = $file->getClientOriginalExtension();
             $extension = $file->getClientOriginalName();
             $image  = Image::make($file->getRealPath());
-            //$image->resize(1200, 900);
+            $image->resize(600, 400);
             $fileName = rand(11111, 99999) . '.' . $extension;
             //$fileName = 'logo.' . $extension_ext;
-            $image->save($uploadPath.$fileName);
+            $image->save($uploadPath.$fileName, 50);
             //$file->move($uploadPath, $fileName);
             $requestData['logo'] = 'uploads/logo/'.$fileName;
             $requestData['name_logo'] = $fileName;

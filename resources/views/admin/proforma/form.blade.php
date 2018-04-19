@@ -79,15 +79,24 @@
                 <input class="form-control input-sm" name="direccion_cliente" type="text" id="direccion_cliente" value="{{ $ventum->direccion_cliente or ''}}" >
                 {!! $errors->first('direccion_cliente', '<p class="help-block">:message</p>') !!}
             </div>
-        </div>
-        
-
-        
+        </div>  
     </div>
+
+    
+
 </fieldset>
 </div>
-<div class="col-md-6">
-
+<div class="col-md-12">
+    
+    <div class="col-md-6">
+        <div class="form-group {{ $errors->has('detalles_proforma') ? 'has-error' : ''}}">
+            <label for="detalles_proforma" class="col-md-4 control-label">{{ 'DETALLES' }}</label>
+            <div class="col-md-8">
+                {!! Form::textarea('detalles_proforma', null, ['id'=>'detalles_proforma','class' => 'form-control input-sm','autofocus'=>'autofocus']), old('propaganda') !!}
+                {!! $errors->first('detalles_proforma', '<p class="help-block">:message</p>') !!}
+            </div>
+        </div>
+    </div>
 
 </div>
 <div class="col-md-6">

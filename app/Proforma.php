@@ -25,7 +25,7 @@ class Proforma extends Model
      *
      * @var array
      */
-    protected $fillable = ['fecha_proforma', 'total', 'destinatario_mail', 'secuencial_proforma', 'detalles_proforma', 'cliente_id','cliente','contactos','documento_ruc','documento_ced','direccion_cliente','enviado'];
+    protected $fillable = ['fecha_proforma', 'total', 'destinatario_mail', 'secuencial_proforma', 'detalles_proforma', 'cliente_id','cliente','contactos','documento_ruc','documento_ced','direccion_cliente','enviado','subtotal','iva_cero','descuento','iva_calculado','porcentaje_iva'];
 
     public function cliente()
     {

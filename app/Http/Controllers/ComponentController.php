@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\item_proforma;
+use App\Iva;
 
 class ComponentController extends Controller
 {
@@ -56,11 +57,11 @@ class ComponentController extends Controller
         $carrito = item_proforma::orderBy('id','ASC')->get();
         $total = item_proforma::sum('total');
 
-        /*$iva = Iva::where('activo', 1)->first();
+        $iva = Iva::where('activo', 1)->first();
         $iva_valor=$iva->iva;
-        $iva_id=$iva->id;*/
-        $iva_valor=12;
-        $iva_id=1;
+        $iva_id=$iva->id;
+        /*$iva_valor=12;
+        $iva_id=1;*/
         $iva_mostrar = ($iva_valor*1);
         $mult = $iva_valor+100;
         $iva_final = $mult/100;

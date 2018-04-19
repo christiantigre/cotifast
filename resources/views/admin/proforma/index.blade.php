@@ -52,7 +52,10 @@
                                     @else
                                     <small class="label label-danger">NO ENVIADO</small>
                                     @endif</td>
-                                        <td>
+                                        <td>                                            
+                                            <a href="{{ url('/admin/proforma/verproforma/' . $item->id) }}" title="Ver Archivo Proforma"><button class="btn btn-default btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> PDF</button></a>
+                                            <a href="{{ url('/admin/proforma/downloadproforma/' . $item->id) }}" title="Descargar Proforma"><button class="btn btn-default btn-sm"><i class="fa fa-cloud-download" aria-hidden="true"></i> Descargar</button></a>
+                                            <a href="{{ url('/admin/proforma/send_proforma/' . $item->id) }}" title="Enviar Proforma"><button class="btn btn-default btn-sm"><i class="fa fa-envelope" aria-hidden="true"></i> Enviar</button></a>
                                             <a href="{{ url('/admin/proforma/' . $item->id) }}" title="Ver proforma"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> Ver</button></a>
                                             <a href="{{ url('/admin/proforma/' . $item->id . '/edit') }}" title="Editar proforma"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Editar</button></a>
 

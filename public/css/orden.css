@@ -1,0 +1,122 @@
+* {border: 0; margin: 2; padding: 2;}
+.logo {
+	float: center;
+	text-align: center;
+	margin-bottom: 0px;
+}
+fieldset{ padding: 100px;}
+.fieldset_header{
+	border: 1px solid #050505; padding: 10px;
+}
+p{
+	line-height: 1px; 
+}
+.header_label{
+	font: 10px Georgia, "Times New Roman", Times, serif;
+}
+h1 {
+	font: 16px Georgia, "Times New Roman", Times, serif;
+}
+h2 {
+	font: 12px Georgia, "Times New Roman", Times, serif;
+}
+strong{ font-size: 75%; }
+.tabla1{
+	border: 1px solid #050505; padding: 10px;
+	margin: 6; padding: 6;
+	width: 70%;
+	height: auto;
+	float: left;
+}
+.tabla1 tr td.td-logo{width: 70%;}
+.tabla1 tr td.td-secuencial{width: 20%;
+}
+.tabla1 tr td.td-description{width: 100%;}
+label.slog_logan{bottom: 1em;}
+.checkbox{width: 16px; height: 16px;}
+.tabla2{
+	border: 1px solid #050505; padding: 10px;
+	margin: 6; 
+	padding: 6;
+	width: 20%;
+	height: auto;
+	float: right;
+}
+.marcas{
+	width: 100%;
+	border: 0px;
+}
+.marcas tr td{
+	border: 0px;
+}
+.marcas{
+	line-height: 5px;
+}
+.marcas#marcas {
+  border-collapse: separate;
+  border-spacing: 1px 0px;
+}
+.sin_borde{
+	border: 0px;
+}
+/*.border{
+	border: 1px solid #050505; padding: 10px;	
+	}*/
+	td {
+		border: 1px solid;
+	}
+	tr .border{
+		border: 1px solid;
+	}
+	tbody {
+		border: 0px solid;
+	}
+
+	tr {
+		border-bottom: 1px solid #ccc;
+	}
+	.align_right{text-align: left;}
+	.align_center{text-align: center;}
+	.align_left{text-align: right;}
+
+	table.tabla tfoot {
+		border-top: 2px solid black;
+	}
+	
+	.tabla_media_right{
+		margin: 6; padding-bottom: 6;
+		text-align: right;
+		width: 45%;
+		height: auto;
+		border: 1px solid #050505; padding: 10px;
+		height: auto;
+	}
+	.tabla_media_left{
+		margin: 6; padding-bottom: 6;
+		width: 45%;
+		height: auto;
+		border: 1px solid #050505; padding: 10px;
+	}
+
+	.header_label_clausula{
+		font: 9px Georgia, "Times New Roman", Times, serif;
+	}
+	hr .hr_fr{
+		/*height: 1px;
+		width: 30%;
+		background-color: black;*/
+		border: 0; border-top: 1px solid #999; border-bottom: 1px solid #333; height:0;
+	}
+	.t_frm_detall{
+		width: 100%;
+		height: 10%;
+		border: 1px solid #050505; padding: 10px;
+		margin: 6; padding: 6;
+	}
+
+	.firma{
+		/*text-decoration: overline;*/
+	}
+	hr {
+page-break-after: always;
+}

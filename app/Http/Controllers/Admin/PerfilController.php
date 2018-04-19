@@ -57,7 +57,6 @@ class PerfilController extends Controller
         $mailAdmin = auth('admin')->user()->email;
         $usuario = Perfil::where('email', '=', $mailAdmin)->first();
         $credenciales = Admin::where('email', '=', $mailAdmin)->first();
-        
         return view('perfil.cuenta',compact('usuario','credenciales'));
     }
 

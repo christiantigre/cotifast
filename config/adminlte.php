@@ -163,6 +163,10 @@ return [
                     'url'  => 'admin/marca',
                 ],
                 [
+                    'text' => 'Iva',
+                    'url'  => 'admin/iva',
+                ],
+                [
                     'text' => 'Descuento',
                     'url'  => 'admin/descuento',
                 ],
