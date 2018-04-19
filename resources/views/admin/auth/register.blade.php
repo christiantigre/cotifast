@@ -10,7 +10,7 @@
 @section('body')
     <div class="register-box">
         <div class="register-logo">
-            <a href="{{ url(config('adminlte.dashboard_url', 'home')) }}">{!! config('adminlte.logo', '<b>Admin</b>LTE') !!}</a>
+            <a href="{{ url(config('/', '')) }}">{!! config('adminlte.logo', '<b>Admin</b>LTE') !!}</a>
         </div>
 
         <div class="register-box-body">
@@ -63,7 +63,7 @@
                 >{{ trans('adminlte::adminlte.register') }}</button>
             </form>
             <div class="auth-links">
-                <a href="{{ url(config('adminlte.login_url', 'login')) }}"
+                <a href="{{ url('admin/login') }}"
                    class="text-center">{{ trans('adminlte::adminlte.i_already_have_a_membership') }}</a>
             </div>
         </div>
