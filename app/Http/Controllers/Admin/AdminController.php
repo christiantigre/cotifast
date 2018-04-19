@@ -5,6 +5,11 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
+use Carbon\Carbon;
+use App\Proforma;
+use App\Producto;
+use App\Cliente;
+
 class AdminController extends Controller
 {
     public function __construct()
@@ -18,7 +23,25 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $carbon = Carbon::now(new \DateTimeZone('America/Guayaquil'));
+        $fecha_hoy = $carbon->now()->format('Y-m-d');
+
+        $count_proformashoy = Proforma::where('fecha_proforma', $fecha_hoy)->count();
+
+        $valor_proformas = Proforma::where('fecha_proforma', $fecha_hoy)->sum('total');
+
+        $productos_total = Producto::where('activo','1')->count();
+
+        $productos_bajoonventario = Producto::where('cantidad','<','5')->count();
+
+        $perPage = 5;
+        $productos = Producto::where('cantidad','<','10')->paginate($perPage);
+
+        $proformas = Proforma::orderBy('secuencial_proforma','DESC')->where('fecha_proforma', $fecha_hoy)->paginate($perPage); 
+
+        $clientes = Cliente::where('activo','1')->count(); 
+
+        return view('home',compact('fecha_hoy','count_proformashoy','valor_proformas','productos_total','productos_bajoonventario','productos','proformas','clientes'));
     }
 
     /**
